@@ -1,0 +1,38 @@
+﻿<UserControl x:Class="PrismMVVMPSample.KeypadModule.Keypad.KeypadView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PrismMVVMPSample.KeypadModule.Keypad"
+             mc:Ignorable="d" 
+             d:DesignHeight="200" d:DesignWidth="200">
+    <UniformGrid Columns="4">
+        <UniformGrid.Resources>
+            <Style x:Key="op" TargetType="Button">
+                <Setter Property="Margin" Value="5,0,0,5" />
+                <Setter Property="Command" Value="{Binding OperatorCommand}" />
+            </Style>
+            <Style x:Key="digit" TargetType="Button">
+                <Setter Property="Margin" Value="5,0,0,5" />
+                <Setter Property="Command" Value="{Binding KeyPressedCommand}" />
+                <Setter Property="CommandParameter" Value="{Binding RelativeSource={RelativeSource Self}, Path=Content}" />
+            </Style>
+        </UniformGrid.Resources>
+        <Button Style="{StaticResource digit}">1</Button>
+        <Button Style="{StaticResource digit}">2</Button>
+        <Button Style="{StaticResource digit}">3</Button>
+        <Button Style="{StaticResource op}" CommandParameter="{x:Static local:Operator.Plus}">+</Button>
+        <Button Style="{StaticResource digit}">4</Button>
+        <Button Style="{StaticResource digit}">5</Button>
+        <Button Style="{StaticResource digit}">6</Button>
+        <Button Style="{StaticResource op}" CommandParameter="{x:Static local:Operator.Minus}">-</Button>
+        <Button Style="{StaticResource digit}">7</Button>
+        <Button Style="{StaticResource digit}">8</Button>
+        <Button Style="{StaticResource digit}">9</Button>
+        <Button Style="{StaticResource op}" CommandParameter="{x:Static local:Operator.Multiply}">*</Button>
+        <Label />
+        <Button Style="{StaticResource digit}">0</Button>
+        <Button Style="{StaticResource op}" CommandParameter="{x:Static local:Operator.Equals}">=</Button>
+        <Button Style="{StaticResource op}" CommandParameter="{x:Static local:Operator.Divide}">/</Button>
+    </UniformGrid>
+</UserControl>
